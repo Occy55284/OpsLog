@@ -1,2 +1,0 @@
-# OpsLog
-Daily Ops sheet
