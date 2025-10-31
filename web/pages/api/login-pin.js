@@ -5,6 +5,7 @@ import { serialize } from 'cookie';
 import { getSupabaseAdmin } from '../../lib/supabaseAdmin.js';
 
 
+
 const COOKIE_NAME = 'opslog_session';
 const MAX_AGE = 60 * 60 * 12; // 12 hours
 
