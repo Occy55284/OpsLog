@@ -1,5 +1,3 @@
-// trigger deploy
-
 // pages/api/login-pin.js
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
