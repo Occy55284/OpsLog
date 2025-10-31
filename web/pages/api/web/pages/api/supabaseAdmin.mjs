@@ -1,13 +1,30 @@
-// lib/supabaseAdmin.js
-import { getSupabaseAdmin } from '../../lib/supabaseAdmin.mjs';
+// web/pages/api/supabaseAdmin.mjs
+import { createClient } from '@supabase/supabase-js';
 
+let adminClient;
 
-
+/**
+ * Returns a singleton Supabase admin client.
+ * Requires env vars:
+ *  - NEXT_PUBLIC_SUPABASE_URL or SUPABASE_URL
+ *  - SUPABASE_SERVICE_ROLE_KEY (recommended) or SUPABASE_SERVICE_KEY
+ */
 export function getSupabaseAdmin() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE;
-  if (!url || !serviceKey) throw new Error('Missing Supabase environment variables');
-  return createClient(url, serviceKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
+  if (!adminClient) {
+    const url =
+      process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+    const serviceRoleKey =
+      process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+
+    if (!url || !serviceRoleKey) {
+      throw new Error(
+        'Missing Supabase admin env vars (URL or SERVICE_ROLE_KEY).'
+      );
+    }
+
+    adminClient = createClient(url, serviceRoleKey, {
+      auth: { persistSession: false },
+    });
+  }
+  return adminClient;
 }
