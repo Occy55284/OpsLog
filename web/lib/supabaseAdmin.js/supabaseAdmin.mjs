@@ -1,5 +1,6 @@
 // lib/supabaseAdmin.js
-import { getSupabaseAdmin } from '../../lib/supabaseAdmin.js';
+import { getSupabaseAdmin } from '../../lib/supabaseAdmin.mjs';
+
 
 
 export function getSupabaseAdmin() {
