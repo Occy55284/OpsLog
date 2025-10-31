@@ -2,7 +2,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
-import { getSupabaseAdmin } from '../../lib/supabaseAdmin.mjs';
+import { getSupabaseAdmin } from './supabaseAdmin.mjs';
+
 
 
 const COOKIE_NAME = 'opslog_session';
