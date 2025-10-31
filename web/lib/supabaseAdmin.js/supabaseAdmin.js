@@ -1,5 +1,6 @@
 // lib/supabaseAdmin.js
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseAdmin } from '../../lib/supabaseAdmin.js';
+
 
 export function getSupabaseAdmin() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
